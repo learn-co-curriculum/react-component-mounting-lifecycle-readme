@@ -11,9 +11,9 @@
 A React compoment's lifecycle contains distinct phases for creation and deletion. In coding terms, these are
 called **mounting** and **unmounting**. You can also think of as "setup" and "cleanup".
 
-For example, if you were going to have a picnic, before you lay down the picnic blanket you'd make sure the ground
-was level and clean. Likewise, after you've done with your picnic, before you clean up your picnic blanket, you'd make
-sure you've taken all your belongings off it first and cleared up any rubbish left on the grass so next people could
+If you were going to have a picnic, just before you lay down the picnic blanket you'd make sure the ground
+was level and clean. Also, after you've done with your picnic and before you clean up your picnic blanket, you'd make
+sure you've taken all your belongings off it and cleared up any rubbish left on the grass so people after you could
 easily use the same spot.
 
 That's very similar to what happens with React components. The browser window is almost like a great big field
@@ -27,11 +27,16 @@ In the mounting (or creation, or "setup") phase, we have two **lifecycle methods
 
 ### componentWillMount
 
+**componentWillMount** is called only once in the component lifecycle, immediately before the component is rendered.
+It is usually used to perform any state changes needed before the initial render, because calling this.setState in
+this method will not trigger any additional re-render. This is useful to bear in mind, because in most cases whenever
+we change the component's state, a re-render is triggered.
+
 In picnic terms, **componentWillMount** is the moment when you arrive at the field with your picnic blanket and you
 make sure the spot you've chosen is nice and level. You might find some twigs or little rocks you need to clean up
 before you lay your blanket down.
 
-In React terms, the use-cases for this are quite subtle, but for example, suppose you wanted to keep the time and
+In React terms, the use-cases for this are quite subtle, but for example suppose you wanted to keep the time and
 date of when the component was created in your component state, you could set this up in **componentWillMount**.
 
 ```javascript
@@ -42,10 +47,16 @@ componentWillMount: function(){
 
 ### componentDidMount
 
-In picnic terms, this is the moment just after you've laid out your blanket. You would use it to set up any things you
-want to be using during your stay: lay out all your food and drinks, maybe take out a radio and put some music on.
+Similarily to its the method befor it, **componentDidMount** is also only called once, but immediately *after* the
+`render()` method has taken place. That means that the HTML for the React component has been rendered into the DOM and
+can be accessed if neccessary. This method is used to perform any DOM manipulation of data-fetching that the
+component might need.
 
-In React terms, this is where you would set up any long-running processes you want to use in your component, for example
+If you were at a picnic, this is the moment just after you've laid out your blanket. You would use this time to set up any
+things you want to be using during your stay: lay out all your food and drinks, maybe take out a radio and put some
+music on.
+
+In React, this is where you would set up any long-running processes you want to use in your component, for example
 fetching data. Suppose we were building a weather app which fetches current weather data and displays it to the user.
 We would want this data to update every 15 seconds without the user having to refresh the page. **componentDidMount**
 to the rescue!
@@ -59,13 +70,15 @@ componentDidMount: function(){
 ## Unmounting
 
 I the unmounting (or deletion, or "cleanup") phase, we have just one **lifecycle** method to help us out:
-**componentWillUnmount**.
+**componentWillUnmount**. **componentWillUnmount** is the last function to be called immediately before the component
+is removed from the DOM. It is generally used to perform clean-up for any DOM-elements or timers created in
+**componentWillMount**.
 
-In picnic terms, **componentWillUnmount** is the moment just before you pick up your picnic blanket. You would need to
+At a picnic, **componentWillUnmount** corresponds to just before you pick up your picnic blanket. You would need to
 clean up all the food and drinks you've set on the blanket first or they'd spill everywhere! You'd also have to shut down
-your radio. Only when that's all done, you can pick up your picnic blanket and put it back in the bag safely.
+your radio. After that's all done you would be free to pick up your picnic blanket and put it back in the bag safely.
 
-In React terms, this is where you would clean up any of those long running processes that you set up in
+For a React component, this is where you would clean up any of those long running processes that you set up in
 **componentDidMount**. In the above data fetching example, all we would have to do is clear the interval so that the
 weather API would no longer get called every 15 seconds:
 
