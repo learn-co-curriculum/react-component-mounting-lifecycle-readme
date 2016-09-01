@@ -23,21 +23,21 @@ were using — so that other components could reuse the same space without any a
 ## Mounting
 
 In the mounting (or creation, or "setup") phase, we have access to two **lifecycle methods**:
-**componentWillMount** and **componentDidMount**.
+**`componentWillMount`** and **`componentDidMount`**.
 
-### componentWillMount
+### `componentWillMount`
 
-**componentWillMount** is called only once in the component lifecycle, immediately before the component is rendered.
-It is usually used to perform any state changes needed before the initial render, because calling this.setState in
+**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered.
+It is usually used to perform any state changes needed before the initial render, because calling `this.setState` in
 this method will not trigger an additional render. This is useful to bear in mind, because in most cases whenever
 we change the component's state, a re-render is triggered.
 
-In picnic terms, **componentWillMount** is the moment when you arrive at the field with your picnic blanket and you
+In picnic terms, `componentWillMount` is the moment when you arrive at the field with your picnic blanket and you
 make sure the spot you've chosen is nice and level. You might find some twigs or little rocks you need to clean up
 before you lay your blanket down.
 
 In React terms, the use-cases for this are quite subtle. For example, suppose you want to keep the time and
-date of when the component was created in your component state, you could set this up in **componentWillMount**.
+date of when the component was created in your component state, you could set this up in `componentWillMount`.
 
 ```javascript
 componentWillMount: function(){
@@ -45,9 +45,9 @@ componentWillMount: function(){
 }
 ```
 
-### componentDidMount
+### `componentDidMount`
 
-Similarily to the method above, **componentDidMount** is also only called once, but immediately *after* the
+Similarily to the method above, **`componentDidMount`** is also only called once, but immediately *after* the
 `render()` method has taken place. That means that the HTML for the React component has been rendered into the DOM and
 can be accessed if necessary. This method is used to perform any DOM manipulation of data-fetching that the
 component might need.
@@ -58,7 +58,7 @@ music on.
 
 In React, this is where you would set up any long-running processes you want to use in your component, for example
 fetching data. Suppose we were building a weather app that fetches data on the current weatherand displays it to the user.
-We would want this data to update every 15 seconds without the user having to refresh the page. **componentDidMount**
+We would want this data to update every 15 seconds without the user having to refresh the page. `componentDidMount`
 to the rescue!
 
 ```javascript
@@ -70,16 +70,16 @@ componentDidMount: function(){
 ## Unmounting
 
 In the unmounting (or deletion, or "cleanup") phase, we have just one lifecycle method to help us out:
-**componentWillUnmount**. **componentWillUnmount** is the last function to be called immediately before the component
+`componentWillUnmount`. `componentWillUnmount` is the last function to be called immediately before the component
 is removed from the DOM. It is generally used to perform clean-up for any DOM-elements or timers created in
-**componentWillMount**.
+**`componentWillMount`**.
 
-At a picnic, **componentWillUnmount** corresponds to just before you pick up your picnic blanket. You would need to
+At a picnic, `componentWillUnmount` corresponds to just before you pick up your picnic blanket. You would need to
 clean up all the food and drinks you've set on the blanket first or they'd spill everywhere! You'd also have to shut down
 your radio. After that's all done you would be free to pick up your picnic blanket and put it back in the bag safely.
 
 For a React component, this is where you would clean up any of those long running processes that you set up in
-**componentDidMount**. In the above data fetching example, all we would have to do is clear the interval so that the
+`componentDidMount`. In the above data fetching example, all we would have to do is clear the interval so that the
 weather API would no longer get called every 15 seconds:
 
 ```javascript
@@ -95,25 +95,25 @@ and that when it gets unmounted, it leaves the space it occupied just as it was 
 
 In the mounting step, we can set up any special requirements we may have for that particular component: fetch some data,
 start counters etc. It is extremely important to clean up all the things we set up in the unmounting stage in
-**componentWillUnmount**, as not doing so may lead to some pretty nasty consequences - even as bad as crashing your
+`componentWillUnmount`, as not doing so may lead to some pretty nasty consequences - even as bad as crashing your
 carefully crafted application!
 
 
 ### Mounting lifecycle methods
 Called once on initial render:
 
-| Method             | nextProps | nextState | Can call this.setState | Called when?               | Used for                                                                                    |
+| Method             | nextProps | nextState | Can call `this.setState` | Called when?               | Used for                                                                                    |
 |--------------------|:---------:|:---------:|:----------------------:|:--------------------------:|:-------------------------------------------------------------------------------------------:|
-| **componentWillMount** |     no    |     no    |           yes          | once, just before mounting | setting initial state based on props                                                        |
-| **componentDidMount**  |     no    |     no    |           no           | once, just after mounting  | setting up side effects (e.g. creating new DOM elements or setting up asynchronous functions |
+| `componentWillMount` |     no    |     no    |           yes          | once, just before mounting | setting initial state based on props                                                        |
+| `componentDidMount`  |     no    |     no    |           no           | once, just after mounting  | setting up side effects (e.g. creating new DOM elements or setting up asynchronous functions |
 
 
 ### Unmounting lifecycle method
 Called only once, just before the component is removed form the DOM:
 
-|        Method        | nextProps | nextState | Can call this.setState |                     Called when?                    |                         Used for                        |
+|        Method        | nextProps | nextState | Can call `this.setState` |                     Called when?                    |                         Used for                        |
 |:--------------------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|
-| **componentWillUnmount** |     no    |     no    |           no           | once, just before component is removed form the DOM | destroying any side effects set up in componentDidMount |
+| `componentWillUnmount` |     no    |     no    |           no           | once, just before component is removed form the DOM | destroying any side effects set up in `componentDidMount` |
 
 
 ## Resources
