@@ -1,24 +1,28 @@
-# React: Component Mounting and Unmounting
+# Component Mounting and Unmounting
+
+## Overview
+
+We'll desrcibe what happens in the mounting and unmounting phases of a React component's lifecycle. 
 
 ## Objectives
 
-1. Describe what happens in the mounting phase of a React component's lifecycle
-2. Describe what happens in the unmounting phase of a React component's
-   lifecycle
+1. Describe the `componentWillMount` and `componentDidMount` lifecycle methods in the mounting phase
+2. Describe the `componentWillUnmount` lifecycle method in the unmounting phase
 
-## Overview
+
+## Setup and Cleanup 
 
 A React component's lifecycle contains distinct phases for creation and deletion. In coding terms, these are
 called **mounting** and **unmounting**. You can also think of them as "setup" and "cleanup".
 
 If you were going to have a picnic, just before you lay down the picnic blanket you'd make sure the ground
 was level and clean. Also, after you're done, and before you clean up your picnic blanket, you'd make
-sure you've taken all your belongings off it and cleared up any rubbish left on the grass so people after you can
+sure you've taken all your belongings off it and cleared up any garbage left on the grass so people after you can
 easily use the same spot.
 
 That's very similar to what happens with React components. The browser window is almost like a great big field
-that loads of components can use. And when they leave, it's only polite of them to clean up the space they
-were using — so that other components could reuse the same space without any annoyances due to things left behind.
+that loads the components that can be used. And when they leave, it's only polite of them to clean up the space they
+were using — so that other components can reuse the same space without any annoyances due to things left behind.
 
 ## Mounting
 
@@ -90,7 +94,7 @@ componentWillUnmount: function(){
 
 ## Summary
 
-The mounting and unmounting steps are important for ensuring that the React component gets set up and initialised nicely
+The mounting and unmounting steps are important for ensuring that the React component gets set up and initialized nicely
 and that when it gets unmounted, it leaves the space it occupied just as it was before: nice and tidy.
 
 In the mounting step, we can set up any special requirements we may have for that particular component: fetch some data,
