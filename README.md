@@ -2,7 +2,7 @@
 
 ## Overview
 
-We'll desrcibe what happens in the mounting and unmounting phases of a React component's lifecycle. 
+We'll describe what happens in the mounting and unmounting phases of a React component's lifecycle. 
 
 ## Objectives
 
@@ -91,3 +91,5 @@ Called only once, just before the component is removed form the DOM:
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/react-component-mounting-and-unmounting'>Component Mounting And Unmounting</a> on Learn.co and start learning to code for free.</p>
