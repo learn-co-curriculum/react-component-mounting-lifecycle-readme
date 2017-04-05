@@ -42,7 +42,7 @@ Similarily to the method above, **`componentDidMount`** is also only called once
 
 If you were at a picnic, this is the moment just after you've laid out your blanket. You would use this time to set up any things you want to be using during your stay: lay out all your food and drinks, maybe take out a radio and put some music on.
 
-In React, this is where you would set up any long-running processes you want to use in your component, for example fetching data. Suppose we were building a weather app that fetches data on the current weatherand displays it to the user. We would want this data to update every 15 seconds without the user having to refresh the page. `componentDidMount` to the rescue!
+In React, this is where you would set up any long-running processes you want to use in your component, for example fetching data. Suppose we were building a weather app that fetches data on the current weather and displays it to the user. We would want this data to update every 15 seconds without the user having to refresh the page. `componentDidMount` to the rescue!
 
 ```javascript
 componentDidMount: function(){
@@ -91,3 +91,5 @@ Called only once, just before the component is removed form the DOM:
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/react-component-mounting-and-unmounting'>Component Mounting And Unmounting</a> on Learn.co and start learning to code for free.</p>
