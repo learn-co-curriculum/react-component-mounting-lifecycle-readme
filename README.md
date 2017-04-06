@@ -2,7 +2,7 @@
 
 ## Overview
 
-We'll desrcibe what happens in the mounting and unmounting phases of a React component's lifecycle. 
+We'll describe what happens in the mounting and unmounting phases of a React component's lifecycle. 
 
 ## Objectives
 
