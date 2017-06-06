@@ -81,7 +81,7 @@ Called once on initial render:
 
 
 ### Unmounting lifecycle method
-Called only once, just before the component is removed form the DOM:
+Called only once, just before the component is removed from the DOM:
 
 |        Method        | nextProps | nextState | Can call `this.setState` |                     Called when?                    |                         Used for                        |
 |:--------------------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|
