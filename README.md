@@ -31,7 +31,7 @@ In picnic terms, `componentWillMount` is the moment when you arrive at the field
 In React terms, the use-cases for this are quite subtle. For example, suppose you want to keep the time and date of when the component was created in your component state, you could set this up in `componentWillMount`.
 
 ```javascript
-componentWillMount: function(){
+componentWillMount() {
   this.setState({ startDateTime: new Date(Date.now())});
 }
 ```
@@ -45,7 +45,7 @@ If you were at a picnic, this is the moment just after you've laid out your blan
 In React, this is where you would set up any long-running processes you want to use in your component, for example fetching data. Suppose we were building a weather app that fetches data on the current weatherand displays it to the user. We would want this data to update every 15 seconds without the user having to refresh the page. `componentDidMount` to the rescue!
 
 ```javascript
-componentDidMount: function(){
+componentDidMount() {
   this.interval = setInterval(this.fetchWeather, 15000);
 }
 ```
@@ -59,7 +59,7 @@ At a picnic, `componentWillUnmount` corresponds to just before you pick up your 
 For a React component, this is where you would clean up any of those long running processes that you set up in `componentDidMount`. In the above data fetching example, all we would have to do is clear the interval so that the weather API would no longer get called every 15 seconds:
 
 ```javascript
-componentWillUnmount: function(){
+componentWillUnmount() {
   clearInterval(this.interval);
 }
 ```
