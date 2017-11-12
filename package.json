@@ -2,10 +2,6 @@
   "name": "react-component-mounting-and-unmounting",
   "version": "0.1.0",
   "description": "Deep dive into the mounting and unmounting parts of the component lifecycle",
-  "engines": {
-    "node": "6.x",
-    "npm": "3.x"
-  },
   "main": "index.js",
   "scripts": {
     "debug": "node-debug --hidden node_modules _mocha --watch",
