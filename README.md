@@ -25,9 +25,9 @@ That's very similar to what happens with React components. The browser window is
 Technically the **`constructor`** is the first function called upon instantiating **any** class in JS, not just React Components. That being said, the **`constructor`** has an important role in the life of a component, as it acts as a perfect place to set the initial state of a component. Within the constructor, one can initialize state like so: 
 
 ```javascript
-constructor(){
+constructor() {
   super()
-  this.state={
+  this.state = {
     key: "value"
   }
 }
@@ -38,7 +38,7 @@ state = {
   key: "value"
 }
 ```
-(Note: Bear in mind that we call `super`so that we can execute the `constructor` function that is inherited from React.Component while adding our own functionality.)
+Note: Bear in mind that we call `super` so that we can execute the `constructor` function that is inherited from React.Component while adding our own functionality.
 
 It is possible to use the `constructor` to set an initial state that is dependent upon props like so:
 ```javascript
@@ -50,11 +50,11 @@ constructor(props) {
 }
 //source: https://reactjs.org/docs/react-component.html#constructor
 ```
-Note that in contrast to the previous example, we take `props` as an argument to the constructor. This is because we actually are making use of the props to set an initial state - if we aren't using props to do this, then we need not include `props` as an argument to the constructor. 
+Note that in contrast to the previous example, we take `props` as an argument to the constructor. This is because we are making use of the props to set an initial state - if we aren't using props to do this, then we need not include `props` as an argument to the constructor. 
 
 ## Mounting
 
-In the mounting (or creation, or "setup") phase, we have access to two  **lifecycle methods**:**`componentWillMount`**, and **`componentDidMount`**.
+In the mounting (or DOM creation, or "setup") phase, we have access to two  **lifecycle methods**: **`componentWillMount`**, and **`componentDidMount`**.
 
 
 ### `componentWillMount`
