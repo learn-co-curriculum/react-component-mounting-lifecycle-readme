@@ -24,7 +24,7 @@ In the mounting (or creation, or "setup") phase, we have access to two **lifecyc
 
 ### `componentWillMount`
 
-**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. Calling `this.setState` in this method will not trigger an additional render **unless** that setState occurs in an asyncronous action (i.e. a fetch). Therefore, initial state should just be set in the `constructor()` when the component first starts mounting.
+**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. Calling `this.setState` in this method will not trigger an additional render **unless** that setState occurs in an asyncronous action (i.e. a fetch). Therefore, initial state should just be set in the `constructor` when the component first starts mounting.
 
 In picnic terms, `componentWillMount` is the moment when you arrive at the field with your picnic blanket and you make sure the spot you've chosen is nice and level. You might find some twigs or little rocks you need to clean up before you lay your blanket down.
 
