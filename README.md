@@ -18,13 +18,48 @@ If you were going to have a picnic, just before you lay down the picnic blanket 
 
 That's very similar to what happens with React components. The browser window is almost like a great big field that loads the components that can be used. And when they leave, it's only polite of them to clean up the space they were using — so that other components can reuse the same space without any annoyances due to things left behind.
 
+## Pre-Mounting
+
+### `constructor`
+
+Technically the **`constructor`** is the first function called upon instantiating **any** class in JS, not just React Components. That being said, the **`constructor`** has an important role in the life of a component, as it acts as a perfect place to set the initial state of a component. Within the constructor, one can initialize state like so: 
+
+```javascript
+constructor() {
+  super()
+  this.state = {
+    key: "value"
+  }
+}
+
+//Note: In ES7, it is possible to initialize state by simply doing the following inside of your component. If you see either the syntax above or below, keep in mind that they accomplish the same task.
+
+state = {
+  key: "value"
+}
+```
+Note: Bear in mind that we call `super` so that we can execute the `constructor` function that is inherited from React.Component while adding our own functionality.
+
+It is possible to use the `constructor` to set an initial state that is dependent upon props like so:
+```javascript
+constructor(props) {
+  super(props);
+  this.state = {
+    color: props.initialColor
+  };
+}
+//source: https://reactjs.org/docs/react-component.html#constructor
+```
+Note that in contrast to the previous example, we take `props` as an argument to the constructor. This is because we are making use of the props to set an initial state - if we aren't using props to do this, then we need not include `props` as an argument to the constructor. 
+
 ## Mounting
 
-In the mounting (or creation, or "setup") phase, we have access to two **lifecycle methods**: **`componentWillMount`** and **`componentDidMount`**.
+In the mounting (or DOM creation, or "setup") phase, we have access to two  **lifecycle methods**: **`componentWillMount`**, and **`componentDidMount`**.
+
 
 ### `componentWillMount`
 
-**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. It is usually used to perform any state changes needed before the initial render, because calling `this.setState` in this method will not trigger an additional render. This is useful to bear in mind, because in most cases whenever we change the component's state, a re-render is triggered.
+**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. `componentWillMount` is largely considered problematic, and as of now, is being considered for deprecation. If your intention is to set an initial state for your component, it is preferable for you to do this in the `constructor` as shown above. If your intention is to set state using data from an async request, it is preferable that you do this in `componentDidMount`, as we will see below.
 
 In picnic terms, `componentWillMount` is the moment when you arrive at the field with your picnic blanket and you make sure the spot you've chosen is nice and level. You might find some twigs or little rocks you need to clean up before you lay your blanket down.
 
@@ -70,15 +105,14 @@ The mounting and unmounting steps are important for ensuring that the React comp
 
 In the mounting step, we can set up any special requirements we may have for that particular component: fetch some data, start counters etc. It is extremely important to clean up all the things we set up in the unmounting stage in `componentWillUnmount`, as not doing so may lead to some pretty nasty consequences - even as bad as crashing your carefully crafted application!
 
-
 ### Mounting lifecycle methods
 Called once on initial render:
 
 | Method             | nextProps | nextState | Can call `this.setState` | Called when?               | Used for                                                                                    |
 |--------------------|:---------:|:---------:|:----------------------:|:--------------------------:|:-------------------------------------------------------------------------------------------:|
-| `componentWillMount` |     no    |     no    |           yes          | once, just before mounting | setting initial state based on props                                                        |
-| `componentDidMount`  |     no    |     no    |           no           | once, just after mounting  | setting up side effects (e.g. creating new DOM elements or setting up asynchronous functions |
-
+| `constructor` |     no    |     no    |           no          | once, just before `componentWillMount` is called | Setting initial state                                             |
+| `componentWillMount` |     no    |     no    |           yes          | once, just before mounting | Not commonly used                                              |
+| `componentDidMount`  |     no    |     no    |           yes          | once, just after mounting  | setting up side effects (e.g. creating new DOM elements or setting up asynchronous functions |
 
 ### Unmounting lifecycle method
 Called only once, just before the component is removed from the DOM:
@@ -86,7 +120,6 @@ Called only once, just before the component is removed from the DOM:
 |        Method        | nextProps | nextState | Can call `this.setState` |                     Called when?                    |                         Used for                        |
 |:--------------------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|
 | `componentWillUnmount` |     no    |     no    |           no           | once, just before component is removed form the DOM | destroying any side effects set up in `componentDidMount` |
-
 
 ## Resources
 
