@@ -107,7 +107,7 @@ Called once on initial render:
 
 | Method             | nextProps | nextState | Can call `this.setState` | Called when?               | Used for                                                                                    |
 |--------------------|:---------:|:---------:|:----------------------:|:--------------------------:|:-------------------------------------------------------------------------------------------:|
-| `constructor` |     no    |     no    |           no          | once, just before mounting | Setting initial state                                             |
+| `constructor` |     no    |     no    |           no          | once, just before `componentWillMount` is called | Setting initial state                                             |
 | `componentWillMount` |     no    |     no    |           yes          | once, just before mounting | Not commonly used                                              |
 | `componentDidMount`  |     no    |     no    |           yes          | once, just after mounting  | setting up side effects (e.g. creating new DOM elements or setting up asynchronous functions |
 
