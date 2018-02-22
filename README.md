@@ -18,17 +18,15 @@ If you were going to have a picnic, just before you lay down the picnic blanket 
 
 That's very similar to what happens with React components. The browser window is almost like a great big field that loads the components that can be used. And when they leave, it's only polite of them to clean up the space they were using — so that other components can reuse the same space without any annoyances due to things left behind.
 
-## Mounting
-
-In the mounting (or creation, or "setup") phase, we have access to three **lifecycle methods**: **`constructor`**, **`componentWillMount`**, and **`componentDidMount`**.
+## Pre-Mounting
 
 ### `constructor`
 
 Technically the **`constructor`** is the first function called upon instantiating **any** class in JS, not just React Components. That being said, the **`constructor`** has an important role in the life of a component, as it acts as a perfect place to set the initial state of a component. Within the constructor, one can initialize state like so: 
 
 ```javascript
-constructor(props){
-  super(props)
+constructor(){
+  super()
   this.state={
     key: "value"
   }
@@ -40,7 +38,7 @@ state = {
   key: "value"
 }
 ```
-(Note: Bear in mind that we call `super` on `props` so that we can execute the `constructor` function that is inherited from React.Component while adding our own functionality.)
+(Note: Bear in mind that we call `super`so that we can execute the `constructor` function that is inherited from React.Component while adding our own functionality.)
 
 It is possible to use the `constructor` to set an initial state that is dependent upon props like so:
 ```javascript
@@ -52,11 +50,16 @@ constructor(props) {
 }
 //source: https://reactjs.org/docs/react-component.html#constructor
 ```
-Keep in mind that changes to props will **not** be reflected in state upon rerender because the `constructor` is only called upon **mounting** - only props passed during the initial mounting of this component will be used to set the initial state.
+Note that in contrast to the previous example, we take `props` as an argument to the constructor. This is because we actually are making use of the props to set an initial state - if we aren't using props to do this, then we need not include `props` as an argument to the constructor. 
+
+## Mounting
+
+In the mounting (or creation, or "setup") phase, we have access to two  **lifecycle methods**:**`componentWillMount`**, and **`componentDidMount`**.
+
 
 ### `componentWillMount`
 
-**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. Calling `this.setState` in this method will not trigger an additional render **unless** that setState occurs in an asyncronous action (i.e. a fetch), though it is recommended that you not attempt this: it is possible to run into inconsistencies and errors due to the mistiming of asynchronous events with the synchronous execution of a component's lifecycle methods. Because `this.setState` will not trigger a rerender, one might think to use this to set initial state, but it is recommended that you do this in the `constructor` as mentioned above.
+**`componentWillMount`** is called only once in the component lifecycle, immediately before the component is rendered. `componentWillMount` is largely considered problematic, and as of now, is being considered for deprecation. If your intention is to set an initial state for your component, it is preferable for you to do this in the `constructor` as shown above. If your intention is to set state using data from an async request, it is preferable that you do this in `componentDidMount`, as we will see below.
 
 In picnic terms, `componentWillMount` is the moment when you arrive at the field with your picnic blanket and you make sure the spot you've chosen is nice and level. You might find some twigs or little rocks you need to clean up before you lay your blanket down.
 
