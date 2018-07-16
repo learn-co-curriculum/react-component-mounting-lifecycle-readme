@@ -179,8 +179,8 @@ consequences - even as bad as crashing your carefully crafted application!
 
 Called once on initial render:
 
-| Method            | current props and state | prevProps | prevState | nextProps |  nextState | Can call `this.setState` | Called when?               | Used for                                                                                    |
-|:-------------------------:|:---------:|:---------:|:----------------------:|:-------------------------------------------------------:|:--------------------------------------------------------------------------------:|
+| Method            | current props and state | prevProps | prevState | nextProps |  nextState | Can call `this.setState` | Called when?               | Used for |                                                                                   
+|:-------------------------:|:---------:|:---------:|:----------------------:|:-------------------------------------------------------:|:--------------------------------------------------------------------------------:|:---------:|:---------:|:----------------------:|
 | `constructor` |     no    |     no    |     no    |     no    |     no    |     no    | once, just before `static getDerivedStateFromProps()` is called for the first time | Setting initial state                                             |
 | `static getDerivedStateFromProps()` |     yes    |     no    |     no    |     no    |     no    |     yes    | right before the initial render and **all** re-renders | Not used often |
 | `render()`           |     yes   |     no    |     no    |     no    |     no    |     no    | every time React updates and commits to the DOM | Writing JSX for components |
@@ -192,13 +192,11 @@ Called once on initial render:
 Called only once, just before the component is removed from the DOM:
 
 | Method            | current props and state | prevProps | prevState | nextProps |  nextState | Can call `this.setState` | Called when?               | Used for                                                                                    |
-|:--------------------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|
+|:--------------------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|:---------:|:---------:|:----------------------:|
 | `componentWillUnmount` | yes | no | no | no | no | n/a | once, just before component is removed from the DOM | destroying any side effects set up in componentDidMount |
 
 ## Resources
 
 - [React: Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html)
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/react-component-mounting-and-unmounting'>Component Mounting And Unmounting</a> on Learn.co and start learning to code for free.</p>
 
 [blog]: https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state
