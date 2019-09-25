@@ -7,7 +7,8 @@ component's lifecycle.
 
 ## Objectives
 
-1. Describe the `componentWillMount` and `componentDidMount` lifecycle methods in the mounting phase
+1. Describe the `static getDerivedStateFromProps` and `componentDidMount` 
+   lifecycle methods in the mounting phase
 2. Describe the `componentWillUnmount` lifecycle method in the unmounting phase
 
 
