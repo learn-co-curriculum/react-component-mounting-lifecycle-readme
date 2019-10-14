@@ -41,11 +41,15 @@ acts as a perfect place to set the initial state of a component. Within the
 constructor, one can initialize state like so:
 
 ```javascript
-constructor() {
-  super()
-  this.state = {
-    key: "value"
+class App extends React.Component {
+
+  constructor() {
+    super()
+    this.state = {
+      key: "value"
+    }
   }
+  
 }
 ```
 
@@ -55,8 +59,10 @@ that they accomplish the same task at the same time during the component
 lifecycle.
 
 ```javascript
-state = {
-  key: "value"
+class App extends React.Component {
+  state = {
+    key: "value"
+  }
 }
 ```
 
