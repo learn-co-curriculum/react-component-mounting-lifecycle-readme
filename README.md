@@ -182,8 +182,6 @@ consequences - even as bad as crashing your carefully crafted application!
 
 #### Mounting lifecycle methods
 
-#### Mounting lifecycle methods
-
 Called once on initial render:
 
 | Method            | current props and state | prevProps | prevState | nextProps |  nextState | Can call `this.setState` | Called when?               | Used for |                                                                                   
