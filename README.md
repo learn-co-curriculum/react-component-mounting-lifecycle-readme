@@ -1,6 +1,6 @@
 # Component Mounting and Unmounting
 
-## Overview
+## Overview of mounting and unmounting
 
 We'll describe what happens in the mounting and unmounting phases of a React
 component's lifecycle.
